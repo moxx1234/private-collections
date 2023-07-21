@@ -1,0 +1,87 @@
+body {
+	margin: 0;
+	background-color: var(--background-color);
+	transition: background-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	color: var(--text-color);
+	transition: color var(--transition-duration) var(--transition-timing-function);
+	margin: 0;
+}
+
+a {
+	transition: var(--transition-duration) var(--transition-timing-function);
+}
+
+header svg {
+	fill: var(--text-color);
+}
+
+.theme-btn {
+	background-color: transparent;
+	border: none;
+}
+
+.text-input,
+.text-input:focus {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	transition: var(--transition-duration) var(--transition-timing-function);
+	border: 1px solid var(--border-color);
+	border-radius: var(--bs-border-radius);
+}
+
+.text-input::placeholder {
+	color: var(--bs-gray-600);
+}
+
+.modal-content {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.text-muted {
+	color: var(--text-color);
+}
+
+.form-control {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border: 1px solid var(--border-color);
+}
+
+.additional-field {
+	width: 83.3333333333%;
+}
+
+@media (min-width:576px) {
+	.additional-field {
+		width: 41.66666667%;
+	}
+}
+
+/*Quill editor styles*/
+
+.ql-container,
+.ql-toolbar {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border: none !important;
+	padding: 0 !important;
+	transition: background-color var(--transition-duration) var(--transition-timing-function), color var(--transition-duration) var(--transition-timing-function);
+}
+
+.ql-editor {
+	padding: 12px 10px !important;
+}
+
+.focused-editor {
+	background-color: blueviolet;
+}

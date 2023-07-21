@@ -1,0 +1,16 @@
+html[data-theme='light'] {
+	--text-color: var(--bs-black);
+	--background-color: var(--bs-white);
+	--border-color: var(--bs-gray-600);
+}
+
+html[data-theme='dark'] {
+	--text-color: var(--bs-white);
+	--background-color: var(--bs-dark);
+	--border-color: var(--bs-gray-800);
+}
+
+html {
+	--transition-duration: .15s;
+	--transition-timing-function: ease-in-out;
+}
