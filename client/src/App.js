@@ -12,7 +12,7 @@ import Item from './pages/item/Item'
 
 function App() {
 	const currentUser = JSON.parse(localStorage.getItem('user'))
-	const setUser = useUserContextUpdate()
+	const setUser = useUserContextUpdate
 
 	defineUser().then(data => {
 		if (!data) return
