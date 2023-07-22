@@ -3,10 +3,21 @@ import { Button, Container, Form, Nav, Navbar, NavLink } from 'react-bootstrap'
 import { BsFillMoonFill, BsBrightnessHighFill } from 'react-icons/bs'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useThemeContext, useThemeUpdateContext } from '../context/ThemeContext'
+import { useUserContext, useUserContextUpdate } from '../context/UserContext'
+import { logout } from '../api'
 
-function Header({ onModalOpen, isLogged, isAdmin, onLogout }) {
+function Header({ onModalOpen }) {
 	const theme = useThemeContext()
 	const toggleTheme = useThemeUpdateContext()
+	const { isLogged } = useUserContext()
+	const setUser = useUserContextUpdate()
+
+	const handleLogout = () => {
+		logout().then(() => {
+			localStorage.removeItem('user')
+			setUser(false)
+		})
+	}
 	return (
 		<header>
 			<Navbar bg="primary" variant={theme} expand="lg">
@@ -40,7 +51,7 @@ function Header({ onModalOpen, isLogged, isAdmin, onLogout }) {
 										<LinkContainer to='/profile'>
 											<NavLink>Profile</NavLink>
 										</LinkContainer>
-										<Nav.Link onClick={onLogout} >Log Out</Nav.Link>
+										<Nav.Link onClick={handleLogout} >Log Out</Nav.Link>
 									</> :
 									<>
 										<Nav.Link onClick={() => onModalOpen('login')} >Login</Nav.Link>

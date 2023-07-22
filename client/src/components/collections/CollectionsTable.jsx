@@ -10,7 +10,6 @@ function CollectionsTable({ data }) {
 				<tr>
 					<th>#</th>
 					<th>Collection</th>
-					<th>Item Qty.</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -19,7 +18,6 @@ function CollectionsTable({ data }) {
 						<tr>
 							<td>{index + 1}</td>
 							<td>{item.name}</td>
-							<td></td>
 						</tr>
 					</LinkContainer>
 				))}

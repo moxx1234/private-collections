@@ -4,10 +4,10 @@ import { Form } from 'react-bootstrap'
 import * as yup from 'yup'
 import FormGroup from '../FormGroup'
 import { defineUser, logIn } from '../../api'
-import { useAdminUpdateContext } from '../../context/AdminContext'
+import { useUserContextUpdate } from '../../context/UserContext'
 
 function LoginForm({ closeForm }) {
-	const setIsAdmin = useAdminUpdateContext()
+	const setUser = useUserContextUpdate()
 
 	const initialValues = {
 		email: '',
@@ -24,7 +24,7 @@ function LoginForm({ closeForm }) {
 			closeForm()
 			return defineUser()
 		})
-		setIsAdmin(auth.isAdmin)
+		setUser(true, auth.isAdmin)
 	}
 
 	return (

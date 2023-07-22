@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import { useState } from "react"
 import Header from "../components/Header"
 import FormModal from "../components/FormModal"
+import { Container } from "react-bootstrap"
 
 
 function Layout(props) {
@@ -19,7 +20,7 @@ function Layout(props) {
 		<>
 			<FormModal action={action} openModal={openModal} onClose={handleClose} />
 			<Header onModalOpen={handleOpenModal} {...props} />
-			<main><Outlet /></main>
+			<Container fluid><Outlet /></Container>
 		</>
 	)
 }

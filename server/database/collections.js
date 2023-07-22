@@ -27,7 +27,6 @@ export const getCollections = async (id) => {
 				{ id },
 				{ ownerId: id }
 			]
-
 		}
 	})
 		.then(result => result.map(collection => collection.dataValues))

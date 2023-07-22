@@ -1,7 +1,7 @@
 // import io from 'socket.io-client'
 import { logIn, logout, register, defineUser } from "./auth.api"
 import { createCollection, getAllCollections, getCollection } from './collections.api'
-import { createItem, getAllItems } from './items.api'
+import { createItem, getAllItems, getItem } from './items.api'
 
 // const socket = io(window.location.host, { transports: ['websocket'] })
 
@@ -15,5 +15,6 @@ export {
 	getAllCollections,
 	getCollection,
 	createItem,
-	getAllItems
+	getAllItems,
+	getItem
 }

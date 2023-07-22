@@ -1,4 +1,5 @@
 import { Item } from "./init.js"
+import { Op } from "sequelize"
 
 export const createItem = async (item) => {
 	return await Item.create(item)
@@ -9,7 +10,9 @@ export const createItem = async (item) => {
 export const getItems = async (id) => {
 	return await Item.findAll({
 		attributes: ['id', 'itemName', 'itemTags', 'additionalInfo'],
-		where: { collectionId: id }
+		where: {
+			[Op.or]: [{ id }, { collectionId: id }]
+		}
 	})
 		.then(result => result.map(item => item.dataValues))
 		.catch(error => console.log(error))

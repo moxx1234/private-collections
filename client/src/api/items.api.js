@@ -17,3 +17,11 @@ export const getAllItems = async (collectionId) => {
 		.then((response) => response.data)
 		.catch(error => console.log(error))
 }
+
+export const getItem = async (id) => {
+	return await axios.get('/items', {
+		params: { ID: id }
+	})
+		.then(response => response.data)
+		.catch(error => console.log(error))
+}
