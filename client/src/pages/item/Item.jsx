@@ -25,10 +25,9 @@ function Item() {
 			<h1>Item: <strong>{itemData.itemName}</strong></h1>
 			<h2>Tags: <strong>{itemData.itemTags}</strong></h2>
 			<div>
-				{Object.entries(itemData.additionalInfo).map(([name, value]) => {
-					console.log(name)
-					return <p>{name}: {value}</p>
-				})}
+				{Object.entries(itemData.additionalInfo).map(([name, value]) => (
+					<p>{name}: {value}</p>
+				))}
 			</div>
 		</Container> : <h1>Loading...</h1>
 	)

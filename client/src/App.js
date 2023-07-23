@@ -5,14 +5,14 @@ import Main from './pages/main/Main'
 import User from './pages/user/User'
 import Collection from "./pages/collection/Collection.jsx"
 import { ThemeProvider } from './context/ThemeContext'
-import UserProvider, { useUserContextUpdate } from './context/UserContext'
+import { useUserContextUpdate } from './context/UserContext'
 import { defineUser } from './api'
 import RequireAuth from './hoc/RequireAuth'
 import Item from './pages/item/Item'
 
 function App() {
 	const currentUser = JSON.parse(localStorage.getItem('user'))
-	const setUser = useUserContextUpdate
+	const setUser = useUserContextUpdate()
 
 	defineUser().then(data => {
 		if (!data) return
@@ -22,26 +22,24 @@ function App() {
 	})
 
 	return (
-		<UserProvider>
-			<ThemeProvider>
-				<Routes>
-					<Route path='/' element={<Layout />}>
-						<Route index element={<Main />} />
-						<Route path='profile' element={
-							<RequireAuth>
-								<User id={currentUser} />
-							</RequireAuth>
-						} />
-						<Route path="collection/">
-							<Route path=":collectionId" element={<Collection />} />
-						</Route>
-						<Route path='item/'>
-							<Route path=':itemId' element={<Item />} />
-						</Route>
+		<ThemeProvider>
+			<Routes>
+				<Route path='/' element={<Layout />}>
+					<Route index element={<Main />} />
+					<Route path='profile' element={
+						<RequireAuth>
+							<User id={currentUser} />
+						</RequireAuth>
+					} />
+					<Route path="collection/">
+						<Route path=":collectionId" element={<Collection />} />
 					</Route>
-				</Routes>
-			</ThemeProvider>
-		</UserProvider>
+					<Route path='item/'>
+						<Route path=':itemId' element={<Item />} />
+					</Route>
+				</Route>
+			</Routes>
+		</ThemeProvider>
 	)
 }
 
