@@ -4,12 +4,19 @@ import { BsClipboardPlus } from 'react-icons/bs'
 import { getAllCollections } from "../../api"
 import FormModal from "../../components/FormModal"
 import CollectionsTable from "../../components/collections/CollectionsTable"
+import { useLocation } from 'react-router-dom'
 
-function User({ id }) {
+function User() {
 	const [openModal, setOpenModal] = useState(false)
 	const [collections, setCollections] = useState()
+	const { pathname } = useLocation()
+
+	const currentUser = JSON.parse(localStorage.getItem('user'))
+	const userId = pathname === '/profile' ? currentUser : pathname.replace('/user:', '')
+	const isOwner = pathname === '/profile' || `/user:${currentUser}`
+
 	const renderCollections = () => {
-		getAllCollections(id).then((collections) => {
+		getAllCollections(userId).then((collections) => {
 			const result = collections.map(collection => {
 				const { additionalInfo, ...rest } = collection
 				return { ...rest, additionalInfo: JSON.parse(additionalInfo) }
@@ -29,14 +36,14 @@ function User({ id }) {
 
 	return (
 		<>
-			<FormModal action='addCollection' openModal={openModal} onClose={handleCloseModal} />
+			{isOwner && <FormModal action='addCollection' openModal={openModal} onClose={handleCloseModal} />}
 			<Container fluid className="d-flex justify-content-between align-items-center">
 				<h1>Profile</h1>
 				<div>
-					<Button onClick={() => setOpenModal(true)} variant="primary" className="d-flex align-items-center">
+					{isOwner && <Button onClick={() => setOpenModal(true)} variant="primary" className="d-flex align-items-center">
 						<span className="d-inline-block pe-2">Add collection</span>
 						<BsClipboardPlus />
-					</Button>
+					</Button>}
 				</div>
 			</Container>
 			<Container fluid>

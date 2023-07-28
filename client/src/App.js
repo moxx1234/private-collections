@@ -28,9 +28,10 @@ function App() {
 					<Route index element={<Main />} />
 					<Route path='profile' element={
 						<RequireAuth>
-							<User id={currentUser} />
+							<User />
 						</RequireAuth>
 					} />
+					<Route path='user/:userId' element={<User />} />
 					<Route path="collection/">
 						<Route path=":collectionId" element={<Collection />} />
 					</Route>

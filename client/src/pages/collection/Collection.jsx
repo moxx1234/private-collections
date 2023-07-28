@@ -27,7 +27,11 @@ function Collection() {
 	const defineCollectionItems = () => {
 		getAllItems(collectionId.replace(':', ''))
 			.then(items => {
-				setItems(items)
+				const result = items.map(item => {
+					const { additionalInfo, ...rest } = item
+					return { ...rest, additionalInfo: JSON.parse(additionalInfo) }
+				})
+				setItems(result)
 			})
 	}
 
