@@ -66,7 +66,7 @@ function Collection() {
 							<span className="d-inline-block pe-2">Add item</span>
 							<BsClipboardPlus />
 						</Button>
-						{items && <ItemsTable data={items} />}
+						{items && <ItemsTable data={items} headers={Object.keys(collectionData.additionalInfo)} />}
 					</>
 				}
 			</Container>
