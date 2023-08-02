@@ -33,3 +33,11 @@ export const getCollection = async (collectionId) => {
 		.then(response => response.data)
 		.catch(error => console.log(error))
 }
+
+export const getBiggestCollections = async () => {
+	return await axios.get('/collections/biggest').then(response => response.data).catch(error => console.log(error))
+}
+
+export const getRecentCollections = async () => {
+	return await axios.get('/collections/recent').then(response => response.data).catch(error => console.log(error))
+}

@@ -62,13 +62,14 @@ function Collection() {
 				{
 					isOwner && <>
 						<FormModal action='addItem' openModal={openModal} additionalFields={collectionData.additionalInfo} onClose={() => setOpenModal(false)} />
-						<Button onClick={handleOpenModal} variant="primary" className="d-flex align-items-center">
+						<Button onClick={handleOpenModal} variant="primary" className="d-flex align-items-center mb-2">
 							<span className="d-inline-block pe-2">Add item</span>
 							<BsClipboardPlus />
 						</Button>
-						{items && <ItemsTable data={items} headers={Object.keys(collectionData.additionalInfo)} />}
 					</>
+
 				}
+				{items && <ItemsTable data={items} headers={Object.keys(collectionData.additionalInfo)} />}
 			</Container>
 			: <h1>Loading...</h1>
 	)
